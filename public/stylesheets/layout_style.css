@@ -1,0 +1,84 @@
+body {
+    font-family: sans-serif;
+
+    background-color: #3D405B;
+}
+
+h1 {
+margin-left: 40px;
+    color: #E07A5F;
+}
+
+#wrongInputA
+{
+    color: #F4F1DE ;
+}
+h3 {
+    margin-left: 40px;
+    color: #81B29A;
+}
+
+p {
+    color: #F4F1DE;
+    font-weight: bold;
+    font-size: large;
+}
+ul {
+    color: #81B29A;
+}
+
+div {
+    border:2px solid #E07A5F;
+}
+
+li {
+    margin-bottom: 10px;
+    list-style-type: disc;
+
+}
+
+.showAllComments{
+    margin-left: 15px;
+    color: #F4F1DE;
+}
+a {
+    text-decoration: none;
+    color: #81B29A;
+}
+
+.pagination-div{
+    text-align: center;
+    background-color: #E07A5F;
+}
+.pagination {
+    color: #F4F1DE ;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.pagination-text {
+    color: darkblue; /* Change this to the color you want */
+    margin-left: 10px;
+
+}
+
+.verwijder-button {
+    margin-top: 10px;
+    margin-bottom: -10px;
+    background-color: darkcyan;
+}
+
+.verwijder-reactie {
+    background-color: darkred;
+}
+
+input {
+    margin-bottom: 5px;
+    margin-left: 40px;
+    background-color: #F4F1DE;
+}
+
+button{
+    margin-bottom: 5px;
+    margin-left: 5px;
+    background-color: #F4F1DE;
+}

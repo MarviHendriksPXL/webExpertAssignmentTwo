@@ -1,0 +1,49 @@
+extends ../base_layout
+
+block contents
+    div(class="pagination-div")
+        if currentPage > 1
+            a(href=`/comments/?page=${currentPage - 1}&search=${search || ''}`, class="pagination") Vorige
+        span(class="pagination-text") Pagina #{currentPage} van #{totalPages}
+        if currentPage < totalPages
+            a(href=`/comments/?page=${currentPage + 1}&search=${search || ''}`, class="pagination") Volgende
+
+    h1 Welcome to the Bulletin Board
+    h3 Zoek een comment of toon alles
+    form(id="searchForm", action="/comments", method="GET")
+        input(type="text", id="searchInput", name="search", placeholder="Zoeken...")
+        button(type="submit") Zoeken
+        a(href='/comments/', class="showAllComments") OF toon alle comments
+    h3 Voeg nieuwe comment toe
+    form(id="commentForm", action="/comments/add", method="POST")
+        input(type="text", id="commentText", name="commentText", placeholder="Voeg een commentaar toe...")
+        button(type="submit") Plaats Commentaar
+    h3 Verwijder comments voor de gekozen datum
+    form(id="deleteForm", method="POST", action="/comments/delete-old")
+        label(for="deleteDate")
+        input(type="date", id="deleteDate", name="deleteDate", required)
+        button(type="submit") Verwijder commentaar
+    if comments && comments.length > 0
+        ul
+            div
+            each comment in comments
+                form(method="POST", action=`/comments/${comment._id}/delete`)
+                    button.verwijder-button(type="submit") Verwijder onderstaande comment
+                p= comment.text
+                ul
+                    each reaction in comment.reactions
+                        li= reaction
+                        form(method="POST", action=`/comments/${comment._id}/reactions/${reaction}/delete`)
+                            button.verwijder-reactie(type="submit") Verwijder reactie
+                form(method="POST", action=`/comments/${comment._id}/reactions`)
+                    input(type="text", name="reaction")
+                    button(type="submit") plaats reactie
+                div
+        div(class="pagination-div")
+            if currentPage > 1
+                a(href=`/comments/?page=${currentPage - 1}`, class="pagination") Vorige
+            span(class="pagination-text") Pagina #{currentPage} van #{totalPages}
+            if currentPage < totalPages
+                a(href=`/comments/?page=${currentPage + 1}`, class="pagination") Volgende
+
+
